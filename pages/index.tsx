@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-    <h1 className="font-bold text-transparent text-center text-3xl bg-clip-text bg-gradient-to-r from-[#f53844] to-[#42378f] font-Poppins">Welcome to the Papafam Nft Market Place!</h1>
+    <h1 className="font-bold text-transparent text-center text-3xl bg-clip-text bg-gradient-to-r from-[#f53844] to-[#42378f] font-Poppins">Welcome to the Parsa Nft Market Place!</h1>
 
     <div className="p-10 cursor-pointer" onClick={() => router.push("nft/papafam-apes")}>
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
