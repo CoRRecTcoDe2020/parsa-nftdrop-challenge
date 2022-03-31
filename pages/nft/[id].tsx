@@ -41,7 +41,7 @@ function NftDropPage() {
           <h1 className="w-52 cursor-pointer text-xl font-extralight sm:w-80">
             The{' '}
             <span className="font-extrabold underline decoration-pink-600/50">
-              Papafam
+              Parsa
             </span>{' '}
             Nft Market Place
           </h1>
