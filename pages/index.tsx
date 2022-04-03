@@ -1,29 +1,90 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
+import { sanityClient, urlFor } from "../sanity"
+import { Collection } from "../typings";
 
-const Home: NextPage = () => {
+interface Props {
+  collections: Collection[]
+}
+
+const Home = ({ collections }: Props) => {
   const router = useRouter();
 
   return (
-    <div className="font-Poppins bg-gradient-to-br from-sky-500 to-blue-900 h-screen">
+    <div className="font-Poppins flex flex-col min-h-screen max-w-7xl mx-auto py-20 px-10 2xl:px-0">
       <Head>
         <title>Nft Drop React.js Challenge</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-    <h1 className="font-bold text-transparent text-center text-3xl bg-clip-text bg-gradient-to-r from-[#f53844] to-[#42378f] font-Poppins">Welcome to the Papafam Nft Market Place!</h1>
+    <h1 className="font-bold mb-10 text-4xl text-transparent text-center pt-3 bg-clip-text bg-gradient-to-r from-[#f53844] to-[#42378f] font-Poppins">
+        The{' '}
+      <span className="font-extrabold underline decoration-pink-600/50">
+        Parsa
+      </span>{' '}
+        Nft Market Place
+    </h1>
 
-    <div className="p-10 cursor-pointer" onClick={() => router.push("nft/papafam-apes")}>
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img className="w-full" src="https://links.papareact.com/8sg" alt="" />
-      <div className="px-6 py-4 bg-gradient-to-br from-cyan-800 to-rose-500 rounded-lg">
-        <div className="font-bold text-xl text-white mb-2">Papafam Apes</div>
+    <main className="bg-gradient-to-br from-cyan-800 to-rose-600 p-10 shadow-xl shadow-rose-400/20 rounded-lg">
+      <div className="grid space-x-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        {collections.map((collection) => (
+          <div
+            className="flex flex-col items-center cursor-pointer transition-all duration-200 hover:scale-90"
+            onClick={() => router.push(`/nft/${collection.slug.current}`)}
+          >
+            <img
+              className="h-96 w-60 rounded-2xl object-cover"
+              src={urlFor(collection.mainImage).url()}
+              alt=""
+            />
+
+            <div className="p-5">
+              <h2 className="text-3xl">{collection.title}</h2>
+              <p className="mt-2 text-sm text-gray-400">{collection.description}</p>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-   </div>
+    </main>
   </div>
   )
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const query = `*[_type == "collection"]{
+    _id,
+    title,
+    address,
+    description,
+    nftCollectionName,
+    mainImage {
+      asset
+    },
+    previewImage {
+      asset
+    },
+    slug {
+      current
+    },
+    creator-> {
+      _id,
+      name,
+      address,
+      slug {
+        current
+      },
+    },
+  }`
+
+  const collections = await sanityClient.fetch(query)
+  // console.log(collections)
+
+  return {
+    props: {
+      collections
+    }
+  }
+}
