@@ -66,7 +66,7 @@ function NftDropPage({ collection }: Props) {
     const quantity = 1; // how many unique NFTs you want to claim
 
     setLoading(true);
-    const notification = toast.loading("Minting...", {
+    const notification = toast.loading("Minting NFT...", {
       style: {
         background: "white",
         color: "green",
@@ -122,11 +122,11 @@ function NftDropPage({ collection }: Props) {
   const router = useRouter();
 
   return (
-    <div className="flex h-screen flex-col lg:grid lg:grid-cols-10 font-Poppins bg-gradient-to-br from-sky-400 to-blue-900 w-full">
-      <Toaster position="bottom-center" />
+    <div className="flex h-screen flex-col lg:grid lg:grid-cols-10 font-Poppins">
+      <Toaster position="top-right" />
 
       {/* Left */}
-      <div className="bg-gradient-to-br from-cyan-800 to-rose-500 lg:col-span-4">
+      <div className="bg-gradient-to-br from-cyan-800 to-rose-600 lg:col-span-4">
         <div className="flex flex-col items-center justify-center py-2 lg:min-h-screen">
           <div className="bg-gradient-to-br from-yellow-400 to-purple-600 p-2 rounded-xl">
            <img
@@ -143,7 +143,7 @@ function NftDropPage({ collection }: Props) {
       </div>
 
       {/* Right */}
-      <div className="flex flex-1 flex-col p-12 lg:col-span-6">
+      <div className="flex flex-1 flex-col p-12 lg:col-span-6 bg-gradient-to-br from-sky-400 to-blue-900">
         {/* Header */}
         <header className="flex items-center justify-between">
           <h1
@@ -154,7 +154,7 @@ function NftDropPage({ collection }: Props) {
             <span className="font-extrabold underline decoration-pink-600/50">
               Parsa
             </span>{' '}
-            Nft Market Place
+              Nft Market Place
           </h1>
 
           <button
@@ -194,22 +194,22 @@ function NftDropPage({ collection }: Props) {
             </p>
           )}
 
-          {loading && (
+          {/* {loading && (
             <img
              className="h-80 w-80 object-contain"
              src="https://cdn.hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif"
              alt=""
             />
-          )}
+          )} */}
         </div>
 
         {/* Mint Button */}
         <button
           onClick={mintNft}
           disabled={loading || claimedSupply === totalSupply?.toNumber() || !address}
-          className="h-16 w-full bg-indigo-600 text-white
+          className="h-16 w-full bg-blue-600 text-white
           font-bold rounded-full mt-10 hover:shadow-xl duration-200 hover:opacity-90
-          cursor-pointer disabled:bg-gray-400"
+          cursor-pointer disabled:bg-gray-400 disabled:shadow-none disabled:opacity-100"
           >
             {loading ? (
               <>Loading</>

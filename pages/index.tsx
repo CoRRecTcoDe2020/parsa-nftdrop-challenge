@@ -23,10 +23,10 @@ const Home = ({ collections }: Props) => {
       <span className="font-extrabold underline decoration-pink-600/50">
         Parsa
       </span>{' '}
-        Nft Market Place
+        NFT Market Place
     </h1>
 
-    <main className="bg-gradient-to-br from-cyan-800 to-rose-600 p-10 shadow-xl shadow-rose-400/20 rounded-lg">
+    <main className="bg-gradient-to-tl from-rose-600 to-black p-10 shadow-xl shadow-rose-400/20 rounded-lg">
       <div className="grid space-x-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {collections.map((collection) => (
           <div
