@@ -12,7 +12,7 @@ const Home = ({ collections }: Props) => {
   const router = useRouter();
 
   return (
-    <div className="font-Poppins flex flex-col min-h-screen max-w-7xl mx-auto py-20 px-10 2xl:px-0">
+    <div className="font-Poppins flex flex-col min-h-screen max-w-7xl mx-auto py-20 px-10 2xl:px-0 pt-1">
       <Head>
         <title>Nft Drop React.js Challenge</title>
         <link rel="icon" href="/favicon.ico" />
