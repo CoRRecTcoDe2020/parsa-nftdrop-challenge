@@ -30,7 +30,7 @@ const Home = ({ collections }: Props) => {
       <div className="grid space-x-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {collections.map((collection) => (
           <div
-            className="flex flex-col items-center cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden shadow-xl border-4 border-[#fb9701]"
+            className="flex flex-col items-center cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden shadow-xl"
             onClick={() => router.push(`/nft/${collection.slug.current}`)}
           >
             <img
