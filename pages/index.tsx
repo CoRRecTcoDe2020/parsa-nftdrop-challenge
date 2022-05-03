@@ -27,10 +27,10 @@ const Home = ({ collections }: Props) => {
     </h1>
 
     <main className="bg-gradient-to-tl from-rose-600 to-black p-10 shadow-xl shadow-rose-400/20 rounded-lg">
-      <div className="grid space-x-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid space-x-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden shadow-xl border-4 border-[#fb9701]">
         {collections.map((collection) => (
           <div
-            className="flex flex-col items-center cursor-pointer transition-all duration-200 hover:scale-90"
+            className="flex flex-col items-center cursor-pointer"
             onClick={() => router.push(`/nft/${collection.slug.current}`)}
           >
             <img
